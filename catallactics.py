@@ -77,18 +77,22 @@ class Person():
         uni.humans.append(self)
         self.body, self.mind = Body(self), None #methodological dualism
         #self.name = 'Malboro'
+	self.time_unity = 31536000
 		#self.parents = {'biofather':,'biomother':}
 	def __del__():
 		print('Person {person} (age={age}) died...'.format(person=self, age=self.body.age))
 		#maybe mind still lives? who knows...
 	def action_axiom(self):
 		self.mind.plan()
+		
+	def ageOf(self, time):
+		return time * self.time_unity
 			
 	def increase_age(self):
 		follow_ego = action_axiom
 		delay_end = _delay_end(5)
 		while self.body.alive:
-			if mind is None and self.body.age > 32000000: #~1yo
+			if mind is None and self.body.age > self.ageOf(1): #~1yo
 			'''Gets mind! :)'''
 				#put maybe not occasion
 				self.mind = Mind(property=[self], self)
@@ -96,10 +100,10 @@ class Person():
 				if next(delay_end):
 					follow_ego()
 					delay_end = _delay_end(random.randint(3, 10))
-				if self.body.age > 433620000: #~13.75yo
+				if self.body.age > self.ageOf(13.75): #~13.75yo
 				'''Sexuality'''
 					self.mind.wants.append('sex')
-			if self.body.age > 1734480000: #~55yo
+			if self.body.age > self.ageOf(55): #~55yo
 			'''Old age/"Natural causes" death'''
 				#improve using statistics
 				self.body.alive = False
